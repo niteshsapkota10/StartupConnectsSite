@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup Connects | Dashboard</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <style>
+      * {
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav {
+  background-color: blue;
+  position:fixed;
+}
+.navigationContainer {
+  margin-top: 20%;
+  margin-bottom: 20%;
+  padding-top: 10%;
+  background-color: white;
+  height: 88vh;
+}
+
+.dash {
+  background-color: whitesmoke;
+}
+
+.mysidenav ul li a {
+  text-decoration: none;
+  font-size: larger;
+  display: block;
+  padding: 10px;
+  color: black;
+  margin-bottom: 15px;
+}
+
+.mysidenav ul li a:hover {
+  text-decoration: underline;
+  background-color: black;
+  color: white;
+}
+
+.mysidenav ul {
+  list-style: none;
+}
+
+.navs {
+  margin-top: 2%;
+}
+
+.dashboardelements {
+  background-color: white;
+  color: black;
+  margin-left: 17%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  height: 100vh;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 sidenav overflow-auto">
+          <div class="navigationContainer rounded">
+            <center><h6>Startup Connects</h6></center>
+            <hr />
+            <hr />
+            <div class="mysidenav">
+              <ul>
+                <li>
+                  <a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-server"></i>Jobs</a>
+                </li>
+                <li>
+                  <a href="#"><i class="far fa-building"></i>Read Startups</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-user"></i>Your Profile</a>
+                </li>
+              </ul>
+              <br />
+              <ul>
+                <li>
+                  <a href="#"><i class="fas fa-atom"></i>Upgrade to Pro !!!</a>
+                </li>
+              </ul>
+              <br />
+              <br />
+              <ul>
+                <li>
+                  <a href="/accounts/logout/"><i class="fas fa-atom"></i>Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col dash">
+          <div class="navs">
+            <nav
+              class="navbar navbar-light"
+              style="
+                --bs-breadcrumb-divider: url(
+                  &#34;data:image/svg + xml,
+                  %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+                );
+              "
+              aria-label="breadcrumb"
+            >
+              <div class="container-fluid">
+                <ol class="breadcrumb" style="margin-left:16%;">
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Home
+                  </li>
+                </ol>
+                <form class="d-flex">
+                  <span style="margin-right: 2%;margin-top:1%;"><strong><h4>{{user.first_name}}</h4></strong></span>
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+              </div>
+            </nav>
+            <div class="dashboardelements">
+              <div class="overflow-auto">
+                <div class="startups">
+                  {% for startup in startups %}
+                  <br>
+                  <div style="border:1px solid salmon;padding: 20px;margin:10px;">
+                      <center><h3><strong>{{startup}}</strong></h3></center>
+                      <h6><strong>Visions</strong></h6>
+                    <span><p>
+                      {{startup.vision}}
+                    </p></span>
+                    <h6><strong>Descriptions:</strong></h6>
+                    <span>
+                      <p>
+                        {{startup.description}}
+                      </p>
+                    </span>
+                    <span style="color:green;float:right;">Started at: {{startup.startedDate}}</span>
+                    <br/>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

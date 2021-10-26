@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Connects | SignUp</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+        main{
+            margin-top: 5.5%;
+        }
+        .signupBanner{
+            height: 88vh;
+            background-color: #0047ff;
+        }
+        .signupForm{
+            background-color: whitesmoke;
+        }
+        .errors{
+            color:red;
+        }
+        .errorlist li{
+        color:red;
+        }
+        .helptext{
+            display:none;
+         }
+           .table tr{
+                padding: 10%;
+           }
+           input{
+             padding: 5%;
+             margin: 5%;
+           }
+    </style>
+</head>
+<body>
+    <header>
+        <nav
+          class="navbar navbar-expand-lg navbar-light fixed-top"
+          style="background: #0047ff; height: 12vh"
+        >
+          <div class="container">
+            <a class="navbar-brand mylinks" style="color: white" href="/"
+              >Startup Connects</a
+            >
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarScroll"
+              aria-controls="navbarScroll"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+              <ul
+                class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                style="--bs-scroll-height: 100px"
+              >
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    style="color: white"
+                    aria-current="page"
+                    href="/"
+                    ><span class="fa fa-home"></span>Home</a
+                  >
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarScrollingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="color: white"
+                  >
+                    <i class="fab fa-servicestack"></i>
+                    Services
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarScrollingDropdown"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#">Startup Promotions!</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Ecommerce!</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        >Project Based Startup Jobs!</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: white" href="#"
+                    ><span class="fa fa-users"></span>About Us</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: white" href="#"
+                    ><i class="fas fa-id-card"></i>Contact Us!</a
+                  >
+                </li>
+              </ul>
+              <div class="d-flex">
+                <button class="me-2 btn btn-outline-light" type="submit">
+                  <span class="fa fa-user"></span>
+                  Sign Up!
+                </button>
+                <a class="btn btn-outline-light" href="/accounts/login/">
+                  <i class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>Login
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-5 signupBanner"><center><h2 style="color: white;margin-top: 30%;">Signup Here... <br>Startup Connects...</h2></center></div>
+                  <div class="col signupForm">
+
+                    <center><h4 style="margin-top: 2%;">Fill the form to Signup!</h4></center>
+                      <br/>
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>
+                    {{form.as_table}}
+                        </table>
+                    <center>
+                    <button type="submit" class="btn btn-outline-dark">Signup</button>
+                    </center>
+                </form>
+                      <br>
+                      <center>Already Have an Account ??<a href="/accounts/login/">Login</a> </center>
+                </div>
+              </div>
+          </div>
+      </main>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

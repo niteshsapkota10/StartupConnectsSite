@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Startups</title>
+</head>
+<body>
+<ul>
+    {% for startup in object_list %}
+        <li>{{startup.startupname}}</li>
+        <li><a href="/startups/detail/{{startup.id}}/">See More..</a></li>
+            <li><a href="/startups/update/{{startup.id}}/">Update</a></li>
+        <li><a href="/startups/delete/{{startup.id}}/">Delete</a></li>
+    {% empty %}
+    <li> No Startups Listed !!! </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
