@@ -32,3 +32,7 @@ class UserInfos(models.Model):
     intrests=models.CharField(max_length=1,choices=Interests,blank=False,null=False)
     user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     others=models.TextField(blank=False,null=False,default="Add Others Field...")
+
+class ProfilePictures(models.Model):
+    picture=models.CharField(max_length=256,blank=False,null=False,default="default.png");
+    user=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
