@@ -71,3 +71,15 @@ class StartupClaps(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     startup=models.OneToOneField(StartupsInfo,on_delete=models.CASCADE)
     status=models.BooleanField(default=False)
+
+class FounderStories(models.Model):
+    story=models.TextField(blank=False,null=False)
+    images=models.CharField(max_length=256,blank=True,null=True)
+    startup_team_id=models.ForeignKey(StartupTeams,on_delete=models.CASCADE)
+
+class StoriesReaction(models.Model):
+    reaction=models.IntegerField(blank=True,null=True)
+    status=models.BooleanField(default=False)
+    user=models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    founder_story=models.OneToOneField(FounderStories,on_delete=models.CASCADE)
+
