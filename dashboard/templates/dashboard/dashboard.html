@@ -77,6 +77,14 @@
   margin-bottom: 3%;
   height: 100vh;
 }
+
+.startups{
+  scroll-snap-type: x mandatory;
+}
+.child{
+  scroll-snap-align: start;
+}
+
     </style>
   </head>
   <body>
@@ -154,6 +162,7 @@
             <div class="dashboardelements">
               <div class="overflow-auto">
                 <div class="startups">
+                  {% if startups %}
                   {% for startup in startups %}
                   <br>
                   <div style="border:1px solid salmon;padding: 20px;margin:10px;">
@@ -168,10 +177,18 @@
                         {{startup.description}}
                       </p>
                     </span>
-                    <span style="color:green;float:right;">Started at: {{startup.startedDate}}</span>
+                    <button class="btn btn-outline-dark" onclick="saveFavourites({{startup.id}});" id="{{startup.id}}"><i class="far fa-heart" style="color:red;"></i>Add to Favourites!</button><button class="btn btn-outline-dark"><i class="fas fa-heart" style="color:red;"></i>Favourites!</button>
+<span style="color:green;float:right;">Started at: {{startup.startedDate}}</span>
                     <br/>
                   </div>
                   {% endfor %}
+                  {% endif %}
+
+                  <section class="child">1</section>
+                  <section class="child">2</section>
+                  <section class="child">3</section>
+                  <p>Childs</p>
+
                 </div>
               </div>
             </div>
@@ -185,5 +202,21 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <script>
+      function saveFavourites(startupid){
+          var startupData={
+            "startupid":startupid
+          };
+          $.ajax({
+            url:'/startups/favourite/create/',
+            type:"POST",
+            data:startupData,
+            dataType:'json',
+          })
+          alert("Favourite Added!!")
+      }
+    </script>
   </body>
 </html>

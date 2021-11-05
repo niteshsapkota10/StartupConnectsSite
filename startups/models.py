@@ -24,3 +24,7 @@ class StartupsInfo(models.Model):
 
     def __str__(self):
         return self.startupname
+
+class Favourites(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    startup=models.ForeignKey(StartupsInfo,on_delete=models.CASCADE)

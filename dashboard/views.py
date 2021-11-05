@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,Http404
 from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserInfos
-from startups.models import StartupsInfo
+from startups.models import StartupsInfo,Favourites
 
 @login_required
 def dashboardHome(request):
@@ -23,5 +23,5 @@ def dashboardHome(request):
             return redirect("/startups/create/")
         else:
             return render(request,"dashboard/dashboard.html",{
-                "startups":startups
+                "startups":None
             })

@@ -1,8 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, Http404
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView
-from .models import StartupsInfo
+from .models import StartupsInfo,Favourites
 from django.forms.widgets import SelectDateWidget
+from django.views.decorators.csrf import csrf_exempt
+
 @method_decorator(login_required,name='dispatch')
 class CreateStartUpView(CreateView):
     model = StartupsInfo
@@ -43,3 +46,14 @@ class DeleteStartup(DeleteView):
     model = StartupsInfo
     success_url = "/startups/list/"
     template_name = "startups/deletestartup.html"
+
+@login_required
+@csrf_exempt
+def addToFavourites(request):
+    if request.method=="POST":
+        startupid=int(request.POST["startupid"])
+        startup=StartupsInfo.objects.get(id=startupid)
+        Favourites.objects.create(user=request.user,startup=startup)
+        return HttpResponse({"Status":"Done"},status=201)
+    if request.method=="GET":
+        return HttpResponse({"Method Not Allowed!!"},status=404)
