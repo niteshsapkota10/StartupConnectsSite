@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'startups',
     'dashboard',
     'FrontPages',
+    'members'
 ]
 
 MIDDLEWARE = [
