@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'startups',
     'dashboard',
     'FrontPages',
-    'members'
+    'members',
+    'investorstartupplan',
+    'StartupMeets',
 ]
 
 MIDDLEWARE = [
