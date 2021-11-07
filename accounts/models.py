@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from . managers import CustomUserManager
+from django.contrib.auth.models import User
 
 class CustomUser(AbstractUser):
     USER_CHOICES=(
@@ -34,5 +35,9 @@ class UserInfos(models.Model):
     others=models.TextField(blank=False,null=False,default="Add Others Field...")
 
 class ProfilePictures(models.Model):
-    picture=models.CharField(max_length=256,blank=False,null=False,default="default.png");
+    picture=models.ImageField(max_length=256,blank=False,null=False,default="default.png");
     user=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+
+class Profile(models.Model):
+    user =  models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    profile_pic =models.OneToOneField("ProfilePictures", verbose_name=_("profile image"), on_delete=models.CASCADE, null=True, blank= True)
