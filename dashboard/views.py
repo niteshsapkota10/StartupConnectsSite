@@ -12,7 +12,7 @@ def dashboardHome(request):
         try:
             userInfo=UserInfos.objects.get(user=request.user.id)
             if userInfo:
-                return render(request, "dashboard/dashboard.html",{
+                return render(request, "dashboard/dashboard2.html",{
                     "startups":startups
                 })
         except:
@@ -22,6 +22,6 @@ def dashboardHome(request):
         if not startupinfo:
             return redirect("/startups/create/")
         else:
-            return render(request,"dashboard/dashboard.html",{
+            return render(request,"dashboard/dashboard2.html",{
                 "startups":None
             })
