@@ -1,0 +1,66 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+{% load static %}
+<div>
+    <hr>
+    <marquee><strong>User's Dashboard .... </strong> </marquee>
+    <hr>
+  </div>
+  <br>
+  <div class="holster">
+    <div class="banners x mandatory-scroll-snapping" dir="ltr">
+      <div>X Mand. LTR</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+    </div>    
+</div>
+<br>
+<div class="cards" style="padding-left: 2%;">
+  <br>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+  <div class="card">
+      <img class="card-img-top" src="{% static 'images/banners/founderbanner.jpg' %}" alt="Card image cap" height="120px">
+      <div class="card-body">
+        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum.</p>
+        <p class="card-text"><small class="text-muted">{{Name}}</small></p>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'images/banners/founderbanner.jpg' %}" alt="Card image cap" height="120px">
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, rem?</p>
+          <p class="card-text"><small class="text-muted">{{Name}}</small></p>
+        </div>
+      </div>
+  </div>
+  <div class="col">
+    <center><h3 style="color: blueviolet;"> -- Progress -- </h3></center>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+    </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+    </div><br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+{% endblock %}
